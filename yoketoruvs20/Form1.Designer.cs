@@ -125,7 +125,7 @@
             // 
             // Titlebutton
             // 
-            this.Titlebutton.Font = new System.Drawing.Font("MS UI Gothic", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Titlebutton.Font = new System.Drawing.Font("HG創英角ｺﾞｼｯｸUB", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Titlebutton.Location = new System.Drawing.Point(206, 356);
             this.Titlebutton.Name = "Titlebutton";
             this.Titlebutton.Size = new System.Drawing.Size(395, 103);
