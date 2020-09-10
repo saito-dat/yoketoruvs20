@@ -37,6 +37,7 @@
             this.Gameoverlabel = new System.Windows.Forms.Label();
             this.Clearlabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Titlebutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Titlelabel
@@ -57,12 +58,13 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("HGS創英角ﾎﾟｯﾌﾟ体", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(206, 309);
+            this.button1.Location = new System.Drawing.Point(206, 296);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(395, 103);
             this.button1.TabIndex = 3;
             this.button1.Text = "スタート!!!";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Timelabel
             // 
@@ -121,11 +123,22 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // Titlebutton
+            // 
+            this.Titlebutton.Font = new System.Drawing.Font("MS UI Gothic", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Titlebutton.Location = new System.Drawing.Point(206, 356);
+            this.Titlebutton.Name = "Titlebutton";
+            this.Titlebutton.Size = new System.Drawing.Size(395, 103);
+            this.Titlebutton.TabIndex = 9;
+            this.Titlebutton.Text = "タイトルへ";
+            this.Titlebutton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 457);
+            this.ClientSize = new System.Drawing.Size(822, 471);
+            this.Controls.Add(this.Titlebutton);
             this.Controls.Add(this.Clearlabel);
             this.Controls.Add(this.Gameoverlabel);
             this.Controls.Add(this.Hilabel);
@@ -150,6 +163,7 @@
         private System.Windows.Forms.Label Gameoverlabel;
         private System.Windows.Forms.Label Clearlabel;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button Titlebutton;
     }
 }
 

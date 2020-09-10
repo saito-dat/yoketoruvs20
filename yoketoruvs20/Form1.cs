@@ -54,6 +54,7 @@ namespace yoketoruvs20
                     Hilabel.Visible = true;
                     Gameoverlabel.Visible = false;
                     Clearlabel.Visible = false;
+                    Titlebutton.Visible = false;
                     break;
 
                 case State.Game:
@@ -64,5 +65,9 @@ namespace yoketoruvs20
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            nextState = State.Game;
+        }
     }
 }
