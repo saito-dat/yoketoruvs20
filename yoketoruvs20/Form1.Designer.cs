@@ -1,6 +1,6 @@
 ﻿namespace yoketoruvs20
 {
-    partial class よけとる2020
+    partial class Form1
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Titlelabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.Timelabel = new System.Windows.Forms.Label();
             this.Itemlabel = new System.Windows.Forms.Label();
             this.Hilabel = new System.Windows.Forms.Label();
+            this.Gameoverlabel = new System.Windows.Forms.Label();
+            this.Clearlabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Titlelabel
@@ -40,7 +44,7 @@
             this.Titlelabel.AutoSize = true;
             this.Titlelabel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Titlelabel.Font = new System.Drawing.Font("HGP創英角ﾎﾟｯﾌﾟ体", 70F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Titlelabel.ForeColor = System.Drawing.Color.Blue;
+            this.Titlelabel.ForeColor = System.Drawing.Color.Green;
             this.Titlelabel.Location = new System.Drawing.Point(102, 113);
             this.Titlelabel.Name = "Titlelabel";
             this.Titlelabel.Size = new System.Drawing.Size(618, 94);
@@ -90,18 +94,47 @@
             this.Hilabel.TabIndex = 6;
             this.Hilabel.Text = "HighScore:100";
             // 
-            // よけとる2020
+            // Gameoverlabel
+            // 
+            this.Gameoverlabel.AutoSize = true;
+            this.Gameoverlabel.Font = new System.Drawing.Font("Showcard Gothic", 69.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gameoverlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.Gameoverlabel.Location = new System.Drawing.Point(158, 179);
+            this.Gameoverlabel.Name = "Gameoverlabel";
+            this.Gameoverlabel.Size = new System.Drawing.Size(538, 114);
+            this.Gameoverlabel.TabIndex = 7;
+            this.Gameoverlabel.Text = "Gameover";
+            // 
+            // Clearlabel
+            // 
+            this.Clearlabel.AutoSize = true;
+            this.Clearlabel.Font = new System.Drawing.Font("Showcard Gothic", 69.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clearlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Clearlabel.Location = new System.Drawing.Point(266, 179);
+            this.Clearlabel.Name = "Clearlabel";
+            this.Clearlabel.Size = new System.Drawing.Size(325, 114);
+            this.Clearlabel.TabIndex = 8;
+            this.Clearlabel.Text = "Clear";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 457);
+            this.Controls.Add(this.Clearlabel);
+            this.Controls.Add(this.Gameoverlabel);
             this.Controls.Add(this.Hilabel);
             this.Controls.Add(this.Itemlabel);
             this.Controls.Add(this.Timelabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Titlelabel);
-            this.Name = "よけとる2020";
-            this.Text = "Form1";
+            this.Name = "Form1";
+            this.Text = "よけとる2020";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,6 +147,9 @@
         private System.Windows.Forms.Label Timelabel;
         private System.Windows.Forms.Label Itemlabel;
         private System.Windows.Forms.Label Hilabel;
+        private System.Windows.Forms.Label Gameoverlabel;
+        private System.Windows.Forms.Label Clearlabel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
