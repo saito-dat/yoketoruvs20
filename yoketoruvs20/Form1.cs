@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace yoketoruvs20
 {
-    public partial class Form1 : Form
+    public partial class よけとる2020 : Form
     {
-        public Form1()
+        public よけとる2020()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
