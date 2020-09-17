@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace yoketoruvs20
 {
     public partial class Form1 : Form
     {
+
+        const bool isDebug = true;
+
         enum State
         {
             None = -1,   //無効
@@ -22,6 +26,9 @@ namespace yoketoruvs20
         }
         State currentState = State.None;
         State nextState = State.Title;
+
+        [DllImport("user32.dll")]
+        public static extern short GetAsyncKeyState(int vKey);
 
         public Form1()
         {
@@ -39,6 +46,19 @@ namespace yoketoruvs20
             {
                 initProc();
             }
+
+            if(isDebug)
+            {
+                if(GetAsyncKeyState((int)Keys.O) < 0)
+                {
+                    nextState = State.Gameover;
+                }
+                else if(GetAsyncKeyState((int)Keys.C) < 0)
+                {
+                    nextState = State.Clear;
+                }
+            }
+
         }
 
         void initProc()
@@ -50,8 +70,9 @@ namespace yoketoruvs20
             {
                 case State.Title:
                     Titlelabel.Visible = true;
-                    button1.Visible = true;
+                    Startbutton.Visible = true;
                     Hilabel.Visible = true;
+                    Copyright.Visible = true;
                     Gameoverlabel.Visible = false;
                     Clearlabel.Visible = false;
                     Titlebutton.Visible = false;
@@ -59,8 +80,20 @@ namespace yoketoruvs20
 
                 case State.Game:
                     Titlelabel.Visible = false;
-                    button1.Visible = false;
+                    Startbutton.Visible = false;
                     Hilabel.Visible = false;
+                    Copyright.Visible = false;
+                    break;
+
+                case State.Gameover:
+                    Gameoverlabel.Visible = true;
+                    Titlebutton.Visible = true;
+                    break;
+
+                case State.Clear:
+                    Clearlabel.Visible = true;
+                    Titlebutton.Visible = true;
+                    Hilabel.Visible = true;
                     break;
             }
         }
@@ -68,6 +101,21 @@ namespace yoketoruvs20
         private void button1_Click(object sender, EventArgs e)
         {
             nextState = State.Game;
+        }
+
+        private void Timelabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Itemlabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Titlebutton_Click(object sender, EventArgs e)
+        {
+            nextState = State.Title;
         }
     }
 }
