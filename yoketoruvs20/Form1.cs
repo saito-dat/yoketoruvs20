@@ -41,6 +41,10 @@ namespace yoketoruvs20
         State currentState = State.None;
         State nextState = State.Title;
 
+        const int SpeedMax = 20;
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
 
@@ -102,7 +106,8 @@ namespace yoketoruvs20
         {
             Point mp = PointToClient(MousePosition);
             //プレイヤーが中心になるように設定
-            
+            //chrs[0].Text = mp.X;
+            //chrs[0].Text = mp.Y;
         }
 
         void initProc()
