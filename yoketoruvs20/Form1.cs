@@ -13,8 +13,10 @@ namespace yoketoruvs20
 {
     public partial class Form1 : Form
     {
-
         const bool isDebug = true;
+        const int playerMax = 1;
+        const int EnemyMax = 10;
+        const int ItemMax = 10;
 
         enum State
         {
