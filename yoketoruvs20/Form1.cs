@@ -92,6 +92,17 @@ namespace yoketoruvs20
                 }
             }
 
+            if(currentState == State.Game)
+            {
+                UpdataGame();
+            }
+        }
+
+        void UpdataGame()
+        {
+            Point mp = PointToClient(MousePosition);
+            //プレイヤーが中心になるように設定
+            
         }
 
         void initProc()
@@ -111,11 +122,19 @@ namespace yoketoruvs20
                     Titlebutton.Visible = false;
                     break;
 
+
                 case State.Game:
                     Titlelabel.Visible = false;
                     Startbutton.Visible = false;
                     Hilabel.Visible = false;
                     Copyright.Visible = false;
+
+                    for(int i = EnemyIndex; i < ChrMax; i++)
+                    {
+                        chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                        chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                    }
+
                     break;
 
                 case State.Gameover:
