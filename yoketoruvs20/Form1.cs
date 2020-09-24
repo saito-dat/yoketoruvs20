@@ -42,6 +42,7 @@ namespace yoketoruvs20
         State nextState = State.Title;
 
         const int SpeedMax = 20;
+
         int[] vx = new int[ChrMax];
         int[] vy = new int[ChrMax];
 
@@ -63,12 +64,17 @@ namespace yoketoruvs20
                 else if(i < ItemIndex)
                 {
                     chrs[i].Text = EnemyText;
+                    chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                    chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                 }
                 else
                 {
                     chrs[i].Text = ItemText;
+                    chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                    chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                 }
                 Controls.Add(chrs[i]);
+                chrs[i].Font = tempLabel.Font;
             }
         }
 
@@ -100,14 +106,39 @@ namespace yoketoruvs20
             {
                 UpdataGame();
             }
+            
         }
 
         void UpdataGame()
         {
             Point mp = PointToClient(MousePosition);
             //プレイヤーが中心になるように設定
-            //chrs[0].Text = mp.X;
-            //chrs[0].Text = mp.Y;
+            chrs[PlayerIndex].Left = mp.X - (chrs[PlayerIndex].Width / 2);
+            chrs[PlayerIndex].Top = mp.Y - (chrs[PlayerIndex].Height / 2);
+
+            for (int i = EnemyIndex; i < ChrMax; i++)
+            {
+                chrs[i].Left += vx[i];
+                chrs[i].Top += vy[i];
+
+                //ラベル反射
+                if (chrs[i].Left < 0)
+                {
+                    vx[i] = Math.Abs(vx[i]);
+                }
+                if (chrs[i].Top < 0)
+                {
+                    vy[i] = Math.Abs(vy[i]);
+                }
+                if (chrs[i].Right > ClientSize.Width)
+                {
+                    vx[i] = -Math.Abs(vx[i]);
+                }
+                if (chrs[i].Bottom > ClientSize.Height)
+                {
+                    vy[i] = -Math.Abs(vy[i]);
+                }
+            }
         }
 
         void initProc()
@@ -125,6 +156,10 @@ namespace yoketoruvs20
                     Gameoverlabel.Visible = false;
                     Clearlabel.Visible = false;
                     Titlebutton.Visible = false;
+                    for(int i = PlayerIndex; i < ChrMax; i++)
+                    {
+                        chrs[i].Visible = false;
+                    }
                     break;
 
 
@@ -139,18 +174,31 @@ namespace yoketoruvs20
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                     }
-
+                    for(int i = PlayerIndex; i < ChrMax; i++)
+                    {
+                        vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        chrs[i].Visible = true;
+                    }
                     break;
 
                 case State.Gameover:
                     Gameoverlabel.Visible = true;
                     Titlebutton.Visible = true;
+                    for (int i = PlayerIndex; i < ChrMax; i++)
+                    {
+                        chrs[i].Visible = false;
+                    }
                     break;
 
                 case State.Clear:
                     Clearlabel.Visible = true;
                     Titlebutton.Visible = true;
                     Hilabel.Visible = true;
+                    for (int i = PlayerIndex; i < ChrMax; i++)
+                    {
+                        chrs[i].Visible = false;
+                    }
                     break;
             }
         }

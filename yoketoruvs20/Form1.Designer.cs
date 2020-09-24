@@ -39,6 +39,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Titlebutton = new System.Windows.Forms.Button();
             this.Copyright = new System.Windows.Forms.Label();
+            this.tempLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Titlelabel
@@ -71,7 +72,7 @@
             // 
             this.Timelabel.AutoSize = true;
             this.Timelabel.Font = new System.Drawing.Font("HGP創英角ｺﾞｼｯｸUB", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Timelabel.Location = new System.Drawing.Point(12, 9);
+            this.Timelabel.Location = new System.Drawing.Point(0, 0);
             this.Timelabel.Name = "Timelabel";
             this.Timelabel.Size = new System.Drawing.Size(243, 53);
             this.Timelabel.TabIndex = 4;
@@ -82,7 +83,7 @@
             // 
             this.Itemlabel.AutoSize = true;
             this.Itemlabel.Font = new System.Drawing.Font("HGP創英角ｺﾞｼｯｸUB", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Itemlabel.Location = new System.Drawing.Point(656, 9);
+            this.Itemlabel.Location = new System.Drawing.Point(668, 0);
             this.Itemlabel.Name = "Itemlabel";
             this.Itemlabel.Size = new System.Drawing.Size(154, 53);
             this.Itemlabel.TabIndex = 5;
@@ -147,11 +148,23 @@
             this.Copyright.TabIndex = 10;
             this.Copyright.Text = "Copyright©2020齊藤巧真";
             // 
+            // tempLabel
+            // 
+            this.tempLabel.AutoSize = true;
+            this.tempLabel.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tempLabel.Location = new System.Drawing.Point(434, 65);
+            this.tempLabel.Name = "tempLabel";
+            this.tempLabel.Size = new System.Drawing.Size(47, 33);
+            this.tempLabel.TabIndex = 11;
+            this.tempLabel.Text = "★";
+            this.tempLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 471);
+            this.Controls.Add(this.tempLabel);
             this.Controls.Add(this.Copyright);
             this.Controls.Add(this.Titlebutton);
             this.Controls.Add(this.Clearlabel);
@@ -180,6 +193,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button Titlebutton;
         private System.Windows.Forms.Label Copyright;
+        private System.Windows.Forms.Label tempLabel;
     }
 }
 
