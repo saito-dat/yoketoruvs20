@@ -64,14 +64,10 @@ namespace yoketoruvs20
                 else if(i < ItemIndex)
                 {
                     chrs[i].Text = EnemyText;
-                    chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
-                    chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                 }
                 else
                 {
                     chrs[i].Text = ItemText;
-                    chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
-                    chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                 }
                 Controls.Add(chrs[i]);
                 chrs[i].Font = tempLabel.Font;
@@ -138,6 +134,17 @@ namespace yoketoruvs20
                 {
                     vy[i] = -Math.Abs(vy[i]);
                 }
+                if (i<=1&&i<=10)
+                {
+                    if ((mp.X >= chrs[i].Left)
+                && (mp.X < chrs[i].Right)
+                && (mp.Y >= chrs[i].Top)
+                && (mp.Y < chrs[i].Bottom))
+                    {
+                        nextState = State.Gameover;
+                    }
+                }
+                
             }
         }
 
