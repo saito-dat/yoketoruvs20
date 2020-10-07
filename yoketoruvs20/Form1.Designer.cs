@@ -96,9 +96,9 @@
             this.Hilabel.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Hilabel.Location = new System.Drawing.Point(269, 240);
             this.Hilabel.Name = "Hilabel";
-            this.Hilabel.Size = new System.Drawing.Size(255, 40);
+            this.Hilabel.Size = new System.Drawing.Size(215, 40);
             this.Hilabel.TabIndex = 6;
-            this.Hilabel.Text = "HighScore:100";
+            this.Hilabel.Text = "HighScore:0";
             // 
             // Gameoverlabel
             // 

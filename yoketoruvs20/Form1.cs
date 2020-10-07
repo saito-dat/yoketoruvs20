@@ -13,8 +13,12 @@ namespace yoketoruvs20
 {
     public partial class Form1 : Form
     {
+        int flame = PlayerIndex;
+        int time = 100;
+        int score = 100;
+        int itemCount = ItemMax;
+        int hiscore = 0;
         const bool isDebug = true;
-
         const int PlayerMax = 1;
         const int EnemyMax = 10;
         const int ItemMax = 10;
@@ -102,11 +106,28 @@ namespace yoketoruvs20
             {
                 UpdataGame();
             }
-            
+            Itemlabel.Text = ("★:" + itemCount.ToString());
         }
 
         void UpdataGame()
         {
+            flame++;
+            if(flame >= 10)
+            {
+                score--;
+                time--;      
+                Timelabel.Text = ("Time:" + time.ToString());
+                //scorelabel.Text = ("score:" + score.ToString());
+                flame = PlayerIndex;
+            }
+            if(time <= 0)
+            {
+                nextState = State.Gameover;
+            }
+            
+            
+            //Hilabel.Text = ("HighScore" + hiscore.ToString());
+            
             Point mp = PointToClient(MousePosition);
             //プレイヤーが中心になるように設定
             chrs[PlayerIndex].Left = mp.X - (chrs[PlayerIndex].Width / 2);
@@ -134,18 +155,35 @@ namespace yoketoruvs20
                 {
                     vy[i] = -Math.Abs(vy[i]);
                 }
-                if (i<=1&&i<=10)
-                {
-                    if ((mp.X >= chrs[i].Left)
+
+                if ((mp.X >= chrs[i].Left)
                 && (mp.X < chrs[i].Right)
                 && (mp.Y >= chrs[i].Top)
                 && (mp.Y < chrs[i].Bottom))
+                {
+                    if (i < ItemIndex)
                     {
-                        nextState = State.Gameover;
+                        //ゲームオーバー                       
+                        nextState = State.Gameover; 
                     }
+                    else
+                    {
+                        //アイテム入手                   
+                        if(chrs[i].Visible == true)
+                        {
+                            itemCount--;
+                            if (itemCount <= 0)
+                            {
+                                nextState = State.Clear;
+                            }
+                        }
+                        chrs[i].Visible = false;
+                    }
+                    
                 }
-                
+
             }
+
         }
 
         void initProc()
@@ -167,6 +205,14 @@ namespace yoketoruvs20
                     {
                         chrs[i].Visible = false;
                     }
+                    
+                    itemCount = ItemMax;
+                    time = 100;
+                    score = 100;
+                    Timelabel.Text = ("Time:100");
+                    //scorelabel.Text = ("score:100");
+                    Itemlabel.Text = ("★:"+ItemMax.ToString());
+                     
                     break;
 
 
@@ -189,13 +235,17 @@ namespace yoketoruvs20
                     }
                     break;
 
+
+
                 case State.Gameover:
                     Gameoverlabel.Visible = true;
                     Titlebutton.Visible = true;
+                    Hilabel.Visible = false;
                     for (int i = PlayerIndex; i < ChrMax; i++)
                     {
                         chrs[i].Visible = false;
                     }
+                    
                     break;
 
                 case State.Clear:
@@ -206,6 +256,11 @@ namespace yoketoruvs20
                     {
                         chrs[i].Visible = false;
                     }
+                    if (hiscore <= time)
+                    {
+                        hiscore = time;
+                    }
+                    Hilabel.Text = ("HighScore" + hiscore.ToString());
                     break;
             }
         }
